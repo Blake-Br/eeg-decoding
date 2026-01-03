@@ -1,22 +1,27 @@
 name: eeg-decoding
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
 dependencies:
   - python=3.11
   - pip
-  - typer
-  - loguru
-  - tqdm
-  - ipython
-  - jupyterlab
-  - matplotlib
-  - notebook
   - numpy
   - pandas
   - scikit-learn
-  - ruff
-  - pytest
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=11.8 
+  - matplotlib
+  - scipy
   - pip:
+    - moabb      
+    - braindecode
+    - ewtpy       
+    - mne        
+    - loguru
+    - typer
+    - tqdm
     - python-dotenv
-    - mkdocs
-    - -e .
+    - -e .     

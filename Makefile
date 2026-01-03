@@ -52,6 +52,12 @@ create_environment:
 	conda env create --name $(PROJECT_NAME) -f environment.yml
 	
 	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
+
+# Setup file when changing yaml file
+.PHONY: setup
+setup: requirements
+	conda env update --file environment.yml --prune
+	pip install -e
 	
 
 
@@ -61,10 +67,10 @@ create_environment:
 #################################################################################
 
 
-## Make dataset
+## Make dataset; default is 2a, change to ds=2b if desired
 .PHONY: data
-data: requirements
-	$(PYTHON_INTERPRETER) eeg_hybrid/dataset.py
+data: 
+	$(PYTHON_INTERPRETER) eeg_hybrid/dataset.py --dataset-name $(ds)
 
 
 #################################################################################
